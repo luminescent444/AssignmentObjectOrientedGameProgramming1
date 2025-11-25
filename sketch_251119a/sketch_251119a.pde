@@ -1,3 +1,5 @@
+int floweyHP = 190;
+int playerHP = 190;
 boolean healSelect = false;
 boolean attackSelect = true;
 boolean attacking = true;
@@ -8,10 +10,13 @@ background(0);
 }
 
 void draw (){
-  drawBackground();
-  drawButtons ();
   
   if (attacking == true) {
+    
+      drawBackground();
+      drawButtons ();
+      HPBars ();
+    
     if (keyCode == LEFT) {
       healSelect = true;
       attackSelect = false;

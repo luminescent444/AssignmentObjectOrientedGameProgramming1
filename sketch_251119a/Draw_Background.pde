@@ -13,6 +13,6 @@ void drawBackground () {
   //draw battle box
   stroke(255);
   fill(0);
-  rect(140,150,120,120);
+  rect(140,170,120,120);
   
 }
