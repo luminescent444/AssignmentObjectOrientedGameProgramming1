@@ -1,4 +1,8 @@
-//testing
 
+void setup () {
 size(400,400);
-line(0,0,10,10);
+}
+
+void draw (){
+  
+}
