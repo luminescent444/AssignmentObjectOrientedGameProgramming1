@@ -33,4 +33,22 @@ if (attackSelect == true) {
     fill(#46FF0A);
     text ("ATTACK", 233, 370);
   }
+  
+  if (buttonsOff == true) {
+    //heal button
+    stroke(255);
+    fill(0);
+    rect (60, 340, 120, 40);
+    fill(255);
+    textSize(30);
+    text ("HEAL", 88, 370);
+
+    //attack button
+    stroke(255);
+    fill(0);
+    rect(220, 340, 120, 40);
+    fill(255);
+    text ("ATTACK", 233, 370);
+  }
+  
 }

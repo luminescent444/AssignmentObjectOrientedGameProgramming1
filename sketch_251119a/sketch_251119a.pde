@@ -3,11 +3,16 @@ int playerHP = 190;
 
 boolean healSelect = false;
 boolean attackSelect = true;
+boolean buttonsOff = false;
+
 boolean attacking = true;
 
 boolean gameOn = true;
 boolean introOn = false;
 boolean deadOn = false;
+
+float timerLength = 50;
+float timerCount = 0;
 
 void setup () {
   size(400, 400);
@@ -18,14 +23,14 @@ void draw () {
   if (gameOn == true) {
 
     PImage floweySprite = loadImage("floweySprite.png");
-    image(floweySprite,150,20,100,110);
+    image(floweySprite, 150, 20, 100, 110);
     drawBackground();
     drawButtons ();
     HPBars ();
-    
 
-    if (attacking == true) {
 
+    if (attacking == false) {
+        buttonsOff = false;
       if (keyCode == LEFT) {
         healSelect = true;
         attackSelect = false;
@@ -33,6 +38,17 @@ void draw () {
       if (keyCode == RIGHT) {
         attackSelect = true;
         healSelect = false;
+      }
+    }
+
+    if (attacking == true) {
+      //call shooting
+      timerCount = timerCount + 1;
+      //rect(100, 100, 200, 200);
+      buttonsOff = true;
+      if (timerCount > timerLength) {
+        timerCount = 0;
+        attacking = false;
       }
     }
   }
