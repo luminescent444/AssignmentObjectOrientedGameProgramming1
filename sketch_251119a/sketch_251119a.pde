@@ -1,5 +1,7 @@
-int floweyHP = 190;
-int playerHP = 190;
+Soul mySoul;
+
+int floweyHP = 200;
+int playerHP = 200;
 
 boolean healSelect = false;
 boolean attackSelect = true;
@@ -14,19 +16,24 @@ boolean deadOn = false;
 float timerLength = 50;
 float timerCount = 0;
 
+float soulX = 195;
+float soulY = 225;
+
 void setup () {
   size(400, 400);
   background(0);
+  mySoul = new Soul();
 }
 
 void draw () {
   if (gameOn == true) {
-
     PImage floweySprite = loadImage("floweySprite.png");
-    image(floweySprite, 150, 20, 100, 110);
     drawBackground();
     drawButtons ();
     HPBars ();
+    image(floweySprite, 150, 20, 100, 110);
+    mySoul.drawSoul();
+     mySoul.moveSoul();
 
 
     if (attacking == false) {
@@ -44,6 +51,7 @@ void draw () {
     }
 
     if (attacking == true) {
+    // mySoul.moveSoul();
       //call shooting
       timerCount = timerCount + 1;
       //rect(100, 100, 200, 200);
