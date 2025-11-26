@@ -37,12 +37,9 @@ void draw () {
     image(floweySprite, 150, 20, 100, 110);
     
     println(velocity.x,velocity.y,position.x,position.y);
-    //mySoul.drawSoul();
-    position.add(velocity);
-    PImage soulSprite = loadImage("soul.png");
-    image(soulSprite, position.x, position.y, 15, 15);
+    mySoul.drawSoul();
 
-
+//home phase button configs
     if (attacking == false) {
       buttonsOff = false;
       buttonCheck();
@@ -57,8 +54,9 @@ void draw () {
       }
     }
 
+//attacking phase settings
     if (attacking == true) {
-      // mySoul.moveSoul();
+      position.add(velocity);
       //call shooting
       timerCount = timerCount + 1;
       //rect(100, 100, 200, 200);
@@ -66,6 +64,8 @@ void draw () {
       if (timerCount > timerLength) {
         timerCount = 0;
         attacking = false;
+        position.x = 195;
+        position.y = 225;
       }
     }
   }
