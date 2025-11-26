@@ -5,7 +5,7 @@ boolean healSelect = false;
 boolean attackSelect = true;
 boolean buttonsOff = false;
 
-boolean attacking = true;
+boolean attacking = false;
 
 boolean gameOn = true;
 boolean introOn = false;
@@ -30,7 +30,9 @@ void draw () {
 
 
     if (attacking == false) {
-        buttonsOff = false;
+      buttonsOff = false;
+      buttonCheck();
+
       if (keyCode == LEFT) {
         healSelect = true;
         attackSelect = false;
