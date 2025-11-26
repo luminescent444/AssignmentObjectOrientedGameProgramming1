@@ -19,6 +19,9 @@ float timerCount = 0;
 float soulX = 195;
 float soulY = 225;
 
+PVector position = new PVector(195, 225);
+PVector velocity = new PVector(0, 0);
+
 void setup () {
   size(400, 400);
   background(0);
@@ -32,8 +35,12 @@ void draw () {
     drawButtons ();
     HPBars ();
     image(floweySprite, 150, 20, 100, 110);
-    mySoul.drawSoul();
-     mySoul.moveSoul();
+    
+    println(velocity.x,velocity.y,position.x,position.y);
+    //mySoul.drawSoul();
+    position.add(velocity);
+    PImage soulSprite = loadImage("soul.png");
+    image(soulSprite, position.x, position.y, 15, 15);
 
 
     if (attacking == false) {
@@ -51,7 +58,7 @@ void draw () {
     }
 
     if (attacking == true) {
-    // mySoul.moveSoul();
+      // mySoul.moveSoul();
       //call shooting
       timerCount = timerCount + 1;
       //rect(100, 100, 200, 200);
@@ -62,4 +69,38 @@ void draw () {
       }
     }
   }
+}
+
+void keyPressed() {
+  if (keyCode == LEFT) {
+    velocity.x = velocity.x - 2;
+  }
+  if (keyCode == RIGHT) {
+    velocity.x = velocity.x + 2;
+  }
+  if (keyCode == UP) {
+    velocity.y = velocity.y - 2;
+  }
+  if (keyCode == DOWN) {
+    velocity.y = velocity.y + 2;
+  }
+  velocity.x = constrain(velocity.x, -2, 2);
+  velocity.y = constrain(velocity.y, -2, 2);
+}
+
+void keyReleased() {
+  if (keyCode == UP) {
+    velocity.y = velocity.y + 2;
+  }
+  if (keyCode == DOWN) {
+    velocity.y = velocity.y - 2;
+  }
+  if (keyCode == LEFT) {
+    velocity.x = velocity.x + 2;
+  }
+  if (keyCode == RIGHT) {
+    velocity.x = velocity.x - 2;
+  }
+  velocity.x = constrain(velocity.x, -2, 2);
+  velocity.y = constrain(velocity.y, -2, 2);
 }
