@@ -1,6 +1,6 @@
 Soul mySoul;
 
-int floweyHP = 200;
+int floweyHP = 10;
 int playerHP = 200;
 
 boolean healSelect = false;
@@ -12,6 +12,7 @@ boolean attacking = false;
 boolean gameOn = true;
 boolean introOn = false;
 boolean deadOn = false;
+boolean winOn = false;
 
 float timerLength = 50;
 float timerCount = 0;
@@ -29,17 +30,25 @@ void setup () {
 }
 
 void draw () {
+
+  if (playerHP < 1) {
+    deadOn = true;
+    gameOn = false;
+  }
+
+  if (deadOn == true) {
+    deathScreen();
+  }
+  
   if (gameOn == true) {
     PImage floweySprite = loadImage("floweySprite.png");
     drawBackground();
     drawButtons ();
     HPBars ();
     image(floweySprite, 150, 20, 100, 110);
-    
-    println(velocity.x,velocity.y,position.x,position.y);
     mySoul.drawSoul();
 
-//home phase button configs
+    //home phase button configs
     if (attacking == false) {
       buttonsOff = false;
       buttonCheck();
@@ -54,7 +63,7 @@ void draw () {
       }
     }
 
-//attacking phase settings
+    //attacking phase settings
     if (attacking == true) {
       position.add(velocity);
       //call shooting
