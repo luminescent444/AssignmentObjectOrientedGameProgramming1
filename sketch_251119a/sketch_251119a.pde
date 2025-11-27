@@ -1,4 +1,5 @@
 Soul mySoul;
+TopBullet myTopBullet;
 
 int floweyHP = 10;
 int playerHP = 200;
@@ -8,6 +9,7 @@ boolean attackSelect = true;
 boolean buttonsOff = false;
 
 boolean attacking = false;
+boolean hitCooldown = false;
 
 boolean gameOn = true;
 boolean introOn = false;
@@ -27,10 +29,11 @@ void setup () {
   size(400, 400);
   background(0);
   mySoul = new Soul();
+  myTopBullet = new TopBullet();
 }
 
 void draw () {
-
+  background(0);
   if (playerHP < 1) {
     deadOn = true;
     gameOn = false;
@@ -47,6 +50,8 @@ void draw () {
     HPBars ();
     image(floweySprite, 150, 20, 100, 110);
     mySoul.drawSoul();
+    myTopBullet.drawBullet();
+    myTopBullet.moveBullet();
 
     //home phase button configs
     if (attacking == false) {
@@ -77,6 +82,18 @@ void draw () {
         position.y = 225;
       }
     }
+    
+    if (hitCooldown == true){
+      
+      float timerL = 200;
+      float timerC = 0;
+      timerC = timerC +1;
+      if (timerC > timerL){
+        hitCooldown = false;
+      }
+      
+    }
+    
   }
 }
 
