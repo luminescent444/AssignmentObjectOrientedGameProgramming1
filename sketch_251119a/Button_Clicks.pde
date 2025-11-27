@@ -20,6 +20,8 @@ void attackPress () {
 
 void healPress () {
 
-  playerHP = playerHP + 20;
+  if (playerHP <200) {
+    playerHP = playerHP + 20;
+  }
   attacking = true;
 }
