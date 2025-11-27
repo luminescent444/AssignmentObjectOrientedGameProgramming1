@@ -18,6 +18,9 @@ boolean winOn = false;
 
 float timerLength = 50;
 float timerCount = 0;
+      float timerL = 20;
+      float timerC = 0;
+
 
 float soulX = 195;
 float soulY = 225;
@@ -34,19 +37,19 @@ void setup () {
 void draw () {
   background(0);
   HPCheck();
-  
-  if(deadOn == true){
-   deathScreen(); 
+
+  if (deadOn == true) {
+    deathScreen();
   }
-  
-  if(winOn == true) {
+
+  if (winOn == true) {
     winScreen();
   }
-  
-  if (introOn == true){
+
+  if (introOn == true) {
     introScreen();
   }
-  
+
   if (gameOn == true) {
     background(0);
     PImage floweySprite = loadImage("floweySprite.png");
@@ -87,19 +90,17 @@ void draw () {
         position.y = 225;
       }
     }
-    
-    if (hitCooldown == true){
-      
-      float timerL = 200;
-      float timerC = 0;
+
+    if (hitCooldown == true) {
+      println(timerC);
+
       timerC = timerC+1;
-      
-      if (timerC>timerL){
-       hitCooldown = false; 
+
+      if (timerC>timerL) {
+        hitCooldown = false;
+        timerC=0;
       }
-      
     }
-    
   }
 }
 
