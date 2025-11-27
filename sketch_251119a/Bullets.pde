@@ -15,10 +15,12 @@ class TopBullet {
     blocation.add(bvelocity);
     int x1 = round(position.x-7);
     int x2 = round(position.x+7);
-    int a = round(blocation.x);
+    int y1 = round(position.y-7);
+    int y2 = round(position.y+7);
+    
     //collision test
     if (hitCooldown == false) {
-      if (x1<a&& a<x2) {
+      if (x1<blocation.x && blocation.x<x2 && y1<blocation.y && blocation.y < y2) {
         playerHP = playerHP - 10;
         hitCooldown = true;
       }

@@ -58,8 +58,8 @@ void draw () {
     HPBars ();
     image(floweySprite, 150, 20, 100, 110);
     mySoul.drawSoul();
-    myTopBullet.drawBullet();
-    myTopBullet.moveBullet();
+    //myTopBullet.drawBullet();
+    //myTopBullet.moveBullet();
 
     //home phase button configs
     if (attacking == false) {
@@ -78,6 +78,9 @@ void draw () {
 
     //attacking phase settings
     if (attacking == true) {
+          myTopBullet.drawBullet();
+    myTopBullet.moveBullet();
+
       position.add(velocity);
       //call shooting
       timerCount = timerCount + 1;
