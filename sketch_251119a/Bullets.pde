@@ -1,7 +1,13 @@
 class TopBullet {
 
-  PVector blocation = new PVector (200, 160);
-  PVector bvelocity = new PVector (0, 1); //shoot passes it a number for x
+  PVector blocation;
+  PVector bvelocity;
+
+TopBullet (float x, float y) {
+  
+  blocation = new PVector (x, y);
+  bvelocity = new PVector (0, 1);
+}
 
   void drawBullet () {
 
@@ -13,6 +19,8 @@ class TopBullet {
   void moveBullet () {
 
     blocation.add(bvelocity);
+    
+    //soul dimensions
     int x1 = round(position.x-7);
     int x2 = round(position.x+7);
     int y1 = round(position.y-7);

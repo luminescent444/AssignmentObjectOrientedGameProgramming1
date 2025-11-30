@@ -16,7 +16,7 @@ boolean introOn = true;
 boolean deadOn = false;
 boolean winOn = false;
 
-float timerLength = 50;
+float timerLength = 100;
 float timerCount = 0;
       float timerL = 20;
       float timerC = 0;
@@ -25,13 +25,17 @@ float timerCount = 0;
 float soulX = 195;
 float soulY = 225;
 
+float [] bXValues = new float[14];
+float [] bYValues = new float[14];
+
 PVector position = new PVector(195, 225);
 PVector velocity = new PVector(0, 0);
 
 void setup () {
   size(400, 400);
   mySoul = new Soul();
-  myTopBullet = new TopBullet();
+  myTopBullet = new TopBullet(200,200);
+  populateBLocations();
 }
 
 void draw () {
