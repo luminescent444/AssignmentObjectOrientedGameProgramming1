@@ -32,6 +32,7 @@ float [] bXValues = new float[14];
 float [] bYValues = new float[14];
 TopBullet [] topBullets = new TopBullet[4];
 LeftBullet [] leftBullets = new LeftBullet[4];
+int [] bulletNums = new int [14];
 
 PVector position = new PVector(195, 225);
 PVector velocity = new PVector(0, 0);
