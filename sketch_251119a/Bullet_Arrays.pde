@@ -66,7 +66,7 @@ void populateBLocations () {
   }
 }
 
-int shoot () {
+void shoot () {
 
   int bulletNum = round(random (0, 13));
   int currentType = 0;
@@ -79,7 +79,7 @@ int shoot () {
   bulletNums[0]=bulletNum;
 
 
-  printArray(bulletNums);
+  //printArray(bulletNums);
   println(bulletNum);
   fill(255);
 
@@ -105,6 +105,12 @@ int shoot () {
     bulletType[i]=bulletType[i-1];
   }
   bulletType[0]=currentType;
+  
+  println(currentType);
+  
+}
+
+void updateBullets(){
 
 //moving around ALL bullets
   for (int i=0; i<13; i++) {
@@ -125,5 +131,4 @@ int shoot () {
     }
   }
 
-  return bulletNum;
 }

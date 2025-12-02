@@ -103,6 +103,7 @@ void draw () {
 
       position.add(velocity);
       buttonsOff = true;
+      updateBullets();
 
       //shoot timer
       shootTimerCount = shootTimerCount + 1;
