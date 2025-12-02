@@ -1,12 +1,14 @@
-class TopBullet {
+class Bullet {
 
   PVector blocation;
   PVector bvelocity;
+  PVector bacceleration;
 
-TopBullet (float x, float y) {
+Bullet (float x, float y, float vx, float vy) {
   
   blocation = new PVector (x, y);
-  bvelocity = new PVector (0, 1);
+  bvelocity = new PVector (vx, vy);
+  bacceleration = new PVector (0.2 * vx,0.2 * vy);
 }
 
   void drawBullet () {
@@ -18,6 +20,7 @@ TopBullet (float x, float y) {
 
   void moveBullet () {
 
+    bvelocity.add(bacceleration);
     blocation.add(bvelocity);
     
     //soul dimensions
@@ -29,121 +32,7 @@ TopBullet (float x, float y) {
     //collision test
     if (hitCooldown == false) {
       if (x1<blocation.x && blocation.x<x2 && y1<blocation.y && blocation.y < y2) {
-        playerHP = playerHP - 10;
-        hitCooldown = true;
-      }
-    }
-  }
-}
-
-class LeftBullet {
-
-  PVector blocation;
-  PVector bvelocity;
-
-LeftBullet (float x, float y) {
-  
-  blocation = new PVector (x, y);
-  bvelocity = new PVector (0, 1);
-}
-
-  void drawBullet () {
-
-    fill (200,200,200);
-    noStroke();
-    ellipse(blocation.x, blocation.y, 5, 5);
-  }
-
-  void moveBullet () {
-
-    blocation.add(bvelocity);
-    
-    //soul dimensions
-    int x1 = round(position.x-7);
-    int x2 = round(position.x+7);
-    int y1 = round(position.y-7);
-    int y2 = round(position.y+7);
-    
-    //collision test
-    if (hitCooldown == false) {
-      if (x1<blocation.x && blocation.x<x2 && y1<blocation.y && blocation.y < y2) {
-        playerHP = playerHP - 10;
-        hitCooldown = true;
-      }
-    }
-  }
-}
-
-class RightBullet {
-
-  PVector blocation;
-  PVector bvelocity;
-
-RightBullet (float x, float y) {
-  
-  blocation = new PVector (x, y);
-  bvelocity = new PVector (0, -1);
-}
-
-  void drawBullet () {
-
-    fill (200,200,200);
-    noStroke();
-    ellipse(blocation.x, blocation.y, 5, 5);
-  }
-
-  void moveBullet () {
-
-    blocation.add(bvelocity);
-    
-    //soul dimensions
-    int x1 = round(position.x-7);
-    int x2 = round(position.x+7);
-    int y1 = round(position.y-7);
-    int y2 = round(position.y+7);
-    
-    //collision test
-    if (hitCooldown == false) {
-      if (x1<blocation.x && blocation.x<x2 && y1<blocation.y && blocation.y < y2) {
-        playerHP = playerHP - 10;
-        hitCooldown = true;
-      }
-    }
-  }
-}
-
-class BottomBullet {
-
-  PVector blocation;
-  PVector bvelocity;
-
-BottomBullet (float x, float y) {
-  
-  blocation = new PVector (x, y);
-  bvelocity = new PVector (-1, 0);
-}
-
-  void drawBullet () {
-
-    fill (200,200,200);
-    noStroke();
-    ellipse(blocation.x, blocation.y, 5, 5);
-  }
-
-  void moveBullet () {
-
-    blocation.add(bvelocity);
-    
-    //soul dimensions
-    int x1 = round(position.x-7);
-    int x2 = round(position.x+7);
-    int y1 = round(position.y-7);
-    int y2 = round(position.y+7);
-    
-    //collision test
-    if (hitCooldown == false) {
-      if (x1<blocation.x && blocation.x<x2 && y1<blocation.y && blocation.y < y2) {
-        playerHP = playerHP - 10;
+        playerHP = playerHP - 20;
         hitCooldown = true;
       }
     }

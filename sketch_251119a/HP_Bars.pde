@@ -18,11 +18,13 @@ void HPBars () {
 void HPCheck() {
   if (playerHP < 1) {
     deadOn = true;
+    attacking = false;
     gameOn = false;
   }
   
   if (floweyHP < 1) {
     winOn = true;
+    attacking = false;
     gameOn = false;
   }
   

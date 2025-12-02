@@ -44,33 +44,59 @@ void populateBLocations () {
   bYValues [11] = 300;
   bYValues [12] = 300;
   bYValues [13] = 300;
+  
+  //top velocity x
+  velocityX [0] = 0;
+  velocityX [1] = 0;
+  velocityX [2] = 0;
+  velocityX [3] = 0;
+  
+  //left velocity x
+  velocityX [4] = 3;
+  velocityX [5] = 3;
+  velocityX [6] = 3;
+  
+  //right velocity x
+  velocityX [7] = -3;
+  velocityX [8] = -3;
+  velocityX [9] = -3;
+  velocityX [10] = -3;
+  
+  //bottom velocity x
+  velocityX [11] = 0;
+  velocityX [12] = 0;
+  velocityX [13] = 0;
+  
+  //top velocity y
+  velocityY [0] = 3;
+  velocityY [1] = 3;
+  velocityY [2] = 3;
+  velocityY [3] = 3;
+  
+  //left velocity y
+  velocityY [4] = 0;
+  velocityY [5] = 0;
+  velocityY [6] = 0;
+ 
+  //right velocity y
+  velocityY [7] = 0;
+  velocityY [8] = 0;
+  velocityY [9] = 0;
+  velocityY [10] = 0;
+  
+  //bottom velocity y
+  velocityY [11] = -3;
+  velocityY [12] = -3;
+  velocityY [13] = -3;
 
-  for (int i = 0; i < 4; i++) {
-    topBullets[i] = new TopBullet(bXValues[i], bYValues[i]);
-  }
-  for (int i = 0; i < 3; i++) {
-    int val =4;
-    leftBullets[i] = new LeftBullet(bXValues[val], bYValues[val]);
-    val = val+1;
-  }
-  for (int i = 0; i < 4; i++) {
-    int val =7;
-    rightBullets[i] = new RightBullet(bXValues[val], bYValues[val]);
-    val = val+1;
-  }
-
-  for (int i = 0; i < 3; i++) {
-    int val =11;
-    bottomBullets[i] = new BottomBullet(bXValues[val], bYValues[val]);
-    val = val+1;
+  for (int i = 0; i < 14; i++) {
+    Bullets[i] = new Bullet(bXValues[i], bYValues[i], velocityX[i],velocityY[i]);
   }
 }
 
 void shoot () {
 
   int bulletNum = round(random (0, 13));
-  int currentType = 0;
-  //1 - top, 2 - left, 3 - right, 4 - bottom
 
   //update bulletnum tracker array
   for (int i = 13; i>0; i--) {
@@ -78,57 +104,14 @@ void shoot () {
   }
   bulletNums[0]=bulletNum;
 
-
-  //printArray(bulletNums);
-  println(bulletNum);
-  fill(255);
-
-  if (bulletNum < 4) {
-    topBullets[bulletNum].drawBullet();
-    currentType = 1;
-  } else if (4<bulletNum && bulletNum < 7) {
-    int temp=bulletNum - 4;
-    leftBullets[temp].drawBullet();
-    currentType = 2;
-  } else if (7<bulletNum && bulletNum < 11) {
-    int temp=bulletNum - 7;
-    rightBullets[temp].drawBullet();
-    currentType = 3;
-  } else if (11<bulletNum && bulletNum < 14) {
-    int temp=bulletNum - 11;
-    bottomBullets[temp].drawBullet();
-    currentType = 4;
-  }
-
-  //update type tracker array
-  for (int i = 13; i>0; i--) {
-    bulletType[i]=bulletType[i-1];
-  }
-  bulletType[0]=currentType;
-  
-  println(currentType);
-  
 }
 
 void updateBullets(){
 
 //moving around ALL bullets
   for (int i=0; i<13; i++) {
-    if (bulletType[i] == 1) {
-      topBullets[bulletNums[i]].moveBullet();
-    }
-    if (bulletType[i] == 2) {
-      //int temp=bulletNum - 4;
-      leftBullets[bulletNums[i]].moveBullet();
-    }
-    if (bulletType[i] == 3) {
-      //int temp=bulletNum - 7;
-      rightBullets[bulletNums[i]].moveBullet();
-    }
-    if (bulletType[i] == 4) {
-      //int temp=bulletNum - 11;
-      bottomBullets[bulletNums[i]].moveBullet();
-    }
+      Bullets[bulletNums[i]].moveBullet();
+      Bullets[bulletNums[i]].drawBullet();
   }
 
 }

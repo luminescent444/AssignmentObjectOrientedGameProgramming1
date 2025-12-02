@@ -1,6 +1,4 @@
 Soul mySoul;
-TopBullet myTopBullet;
-LeftBullet myLeftBullet;
 
 int floweyHP = 1;
 int playerHP = 1;
@@ -30,28 +28,29 @@ float soulY = 225;
 
 float [] bXValues = new float[14];
 float [] bYValues = new float[14];
-TopBullet [] topBullets = new TopBullet[4];
-LeftBullet [] leftBullets = new LeftBullet[3];
-RightBullet [] rightBullets = new RightBullet[4];
-BottomBullet [] bottomBullets = new BottomBullet[3];
+float [] velocityX = new float[14];
+float [] velocityY = new float[14];
+Bullet [] Bullets = new Bullet[14];
 int [] bulletNums = new int [14];
-int [] bulletType = new int [14];
 
-
+//soul pvectors
 PVector position = new PVector(195, 225);
 PVector velocity = new PVector(0, 0);
+
 
 void setup () {
   size(400, 400);
   mySoul = new Soul();
-  //myTopBullet = new TopBullet(200, 200);
-  //myLeftBullet = new LeftBullet(180, 200);
+
   populateBLocations();
+  
 }
 
 void draw () {
   background(0);
   HPCheck();
+  position.x = constrain(position.x, 140, 245);
+  position.y = constrain(position.y, 170, 275);
 
   if (deadOn == true) {
     deathScreen();
@@ -93,13 +92,6 @@ void draw () {
 
     //attacking phase settings
     if (attacking == true) {
-      //myTopBullet.drawBullet();
-      //myTopBullet.moveBullet();
-      //myLeftBullet.drawBullet();
-      //myLeftBullet.moveBullet();
-
-      //topBullets[shoot()].drawBullet();
-      //topBullets[shoot()].moveBullet();
 
       position.add(velocity);
       buttonsOff = true;
@@ -136,34 +128,34 @@ void draw () {
 
 void keyPressed() {
   if (keyCode == LEFT) {
-    velocity.x = velocity.x - 2;
+    velocity.x = velocity.x - 4;
   }
   if (keyCode == RIGHT) {
-    velocity.x = velocity.x + 2;
+    velocity.x = velocity.x + 4;
   }
   if (keyCode == UP) {
-    velocity.y = velocity.y - 2;
+    velocity.y = velocity.y - 4;
   }
   if (keyCode == DOWN) {
-    velocity.y = velocity.y + 2;
+    velocity.y = velocity.y + 4;
   }
-  velocity.x = constrain(velocity.x, -2, 2);
-  velocity.y = constrain(velocity.y, -2, 2);
+  velocity.x = constrain(velocity.x, -4, 4);
+  velocity.y = constrain(velocity.y, -4, 4);
 }
 
 void keyReleased() {
   if (keyCode == UP) {
-    velocity.y = velocity.y + 2;
+    velocity.y = velocity.y + 4;
   }
   if (keyCode == DOWN) {
-    velocity.y = velocity.y - 2;
+    velocity.y = velocity.y - 4;
   }
   if (keyCode == LEFT) {
-    velocity.x = velocity.x + 2;
+    velocity.x = velocity.x + 4;
   }
   if (keyCode == RIGHT) {
-    velocity.x = velocity.x - 2;
+    velocity.x = velocity.x - 4;
   }
-  velocity.x = constrain(velocity.x, -2, 2);
-  velocity.y = constrain(velocity.y, -2, 2);
+  velocity.x = constrain(velocity.x, -4, 4);
+  velocity.y = constrain(velocity.y, -4, 4);
 }
