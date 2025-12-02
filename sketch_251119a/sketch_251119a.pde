@@ -22,7 +22,7 @@ float atkTimerCount = 0;
 float cooldownTimerL = 20;
 float cooldownTimerC = 0;
 float shootTimerCount = 0;
-float shootTimerLength = 30;
+float shootTimerLength = 15;
 
 
 float soulX = 195;
@@ -35,6 +35,7 @@ LeftBullet [] leftBullets = new LeftBullet[3];
 RightBullet [] rightBullets = new RightBullet[4];
 BottomBullet [] bottomBullets = new BottomBullet[3];
 int [] bulletNums = new int [14];
+int [] bulletType = new int [14];
 
 
 PVector position = new PVector(195, 225);
