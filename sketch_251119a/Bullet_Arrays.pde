@@ -48,19 +48,28 @@ void populateBLocations () {
   for (int i = 0; i < 4; i++) {
     topBullets[i] = new TopBullet(bXValues[i], bYValues[i]);
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
     int val =4;
     leftBullets[i] = new LeftBullet(bXValues[val], bYValues[val]);
     val = val+1;
   }
+  for (int i = 0; i < 4; i++) {
+    int val =7;
+    rightBullets[i] = new RightBullet(bXValues[val], bYValues[val]);
+    val = val+1;
+  }
+  
+  for (int i = 0; i < 3; i++) {
+    int val =11;
+    bottomBullets[i] = new BottomBullet(bXValues[val], bYValues[val]);
+    val = val+1;
+  }
 
-  //printArray(topBullets);
-  //printArray(leftBullets);
 }
 
 int shoot () {
 
-  int bulletNum = round(random (0, 7));
+  int bulletNum = round(random (0, 13));
   
   //update bulletnum tracker array
   for (int i = 13; i>0; i--){
@@ -74,13 +83,16 @@ int shoot () {
   fill(255);
   
   if (bulletNum < 4) {
-    //myTopBullet = new TopBullet(bXValues[bulletNum],bYValues[bulletNum]); 
     topBullets[bulletNum].drawBullet();
-    rect(200,200,20,20);
-  }else if (4<bulletNum && bulletNum < 8) {
-    //myLeftBullet = new LeftBullet(bXValues[bulletNum],bYValues[bulletNum]);
-    leftBullets[bulletNum-4].drawBullet();
-    rect(300,300,20,20);
+  }else if (4<bulletNum && bulletNum < 7) {
+    int temp=bulletNum - 4;
+    leftBullets[temp].drawBullet();
+  }else if (7<bulletNum && bulletNum < 11) {
+    int temp=bulletNum - 7;
+    rightBullets[temp].drawBullet();
+  }else if (11<bulletNum && bulletNum < 14) {
+    int temp=bulletNum - 11;
+    bottomBullets[temp].drawBullet();
   }
   
   //for (int i=0; i<13; i++){

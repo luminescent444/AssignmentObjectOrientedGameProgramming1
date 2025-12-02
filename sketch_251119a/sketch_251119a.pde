@@ -31,8 +31,11 @@ float soulY = 225;
 float [] bXValues = new float[14];
 float [] bYValues = new float[14];
 TopBullet [] topBullets = new TopBullet[4];
-LeftBullet [] leftBullets = new LeftBullet[4];
+LeftBullet [] leftBullets = new LeftBullet[3];
+RightBullet [] rightBullets = new RightBullet[4];
+BottomBullet [] bottomBullets = new BottomBullet[3];
 int [] bulletNums = new int [14];
+
 
 PVector position = new PVector(195, 225);
 PVector velocity = new PVector(0, 0);
