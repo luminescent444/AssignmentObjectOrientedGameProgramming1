@@ -40,8 +40,8 @@ PVector velocity = new PVector(0, 0);
 void setup () {
   size(400, 400);
   mySoul = new Soul();
-  myTopBullet = new TopBullet(200, 200);
-  myLeftBullet = new LeftBullet(180, 200);
+  //myTopBullet = new TopBullet(200, 200);
+  //myLeftBullet = new LeftBullet(180, 200);
   populateBLocations();
 }
 
@@ -89,13 +89,13 @@ void draw () {
 
     //attacking phase settings
     if (attacking == true) {
-      myTopBullet.drawBullet();
-      myTopBullet.moveBullet();
+      //myTopBullet.drawBullet();
+      //myTopBullet.moveBullet();
       //myLeftBullet.drawBullet();
       //myLeftBullet.moveBullet();
 
-      topBullets[shoot()].drawBullet();
-      topBullets[shoot()].moveBullet();
+      //topBullets[shoot()].drawBullet();
+      //topBullets[shoot()].moveBullet();
 
       position.add(velocity);
       buttonsOff = true;

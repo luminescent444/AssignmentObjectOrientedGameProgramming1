@@ -60,22 +60,33 @@ void populateBLocations () {
 
 int shoot () {
 
-  int bulletNum = round(random (0, 3));
+  int bulletNum = round(random (0, 7));
   
-  bulletNums[0]=bulletNum;
   //update bulletnum tracker array
   for (int i = 13; i>0; i--){
-    bulletNums[i-1]=bulletNums[i];
+    bulletNums[i]=bulletNums[i-1];
   }
+    bulletNums[0]=bulletNum;
+
   
   printArray(bulletNums);
-  
-  topBullets[bulletNum].drawBullet();
-  topBullets[bulletNum].moveBullet();
   println(bulletNum);
+  fill(255);
+  
   if (bulletNum < 4) {
-
     //myTopBullet = new TopBullet(bXValues[bulletNum],bYValues[bulletNum]); 
+    topBullets[bulletNum].drawBullet();
+    rect(200,200,20,20);
+  }else if (4<bulletNum && bulletNum < 8) {
+    //myLeftBullet = new LeftBullet(bXValues[bulletNum],bYValues[bulletNum]);
+    leftBullets[bulletNum-4].drawBullet();
+    rect(300,300,20,20);
   }
+  
+  //for (int i=0; i<13; i++){
+  //topBullets[bulletNums[i]].drawBullet();
+  //topBullets[bulletNums[i]].moveBullet();
+  //}
+  
   return bulletNum;
 }
