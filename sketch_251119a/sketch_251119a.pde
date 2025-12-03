@@ -182,8 +182,9 @@ void draw () {
   }
 }
 
-//MOVEMENT CONTROLS FOR THE SOUL (referenced Kit Barry's WHICH ONE)
+//MOVEMENT CONTROLS FOR THE SOUL (referenced Kit Barry's Bugs Be Gone controls from week 6)
 
+//when an arrow key is pressed, add or subtract the correct amount to increase/decrease the velocity
 void keyPressed() {
   if (keyCode == LEFT) {
     velocity.x = velocity.x - 4;
@@ -197,10 +198,13 @@ void keyPressed() {
   if (keyCode == DOWN) {
     velocity.y = velocity.y + 4;
   }
+  
+  //constrict the velocity so that it cannot be more or less than 4
   velocity.x = constrain(velocity.x, -4, 4);
   velocity.y = constrain(velocity.y, -4, 4);
 }
 
+//when a key is released, add or subtract the correct amount to stabilize the velocity
 void keyReleased() {
   if (keyCode == UP) {
     velocity.y = velocity.y + 4;
@@ -214,6 +218,8 @@ void keyReleased() {
   if (keyCode == RIGHT) {
     velocity.x = velocity.x - 4;
   }
+  
+  //constrict the velocity so that it cannot be more or less than 4
   velocity.x = constrain(velocity.x, -4, 4);
   velocity.y = constrain(velocity.y, -4, 4);
 }
